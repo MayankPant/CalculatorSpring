@@ -32,7 +32,8 @@ public class CalculatorController {
     @GetMapping("/insert")
     public String insertHistory(@RequestParam("historyId") int historyId, Model model){
         UserHistory userHistory = userHistoryService.findById(historyId);
-        model.addAttribute("userHistory", userHistory);
+        System.out.println(userHistory);
+        model.addAttribute("userhistory", userHistory);
 
         return "index";
     }
