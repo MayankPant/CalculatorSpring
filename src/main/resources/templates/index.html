@@ -8,13 +8,18 @@
 <body>
 
 <div class="calculator">
-    <div class="display"><input type="text" class="display" value="" placeholder="Enter text here"></div>
+
+    <div class="display">
+        <input type="hidden" th:field="${userhistory.id}">
+        <input type="text" class="display" th:field="${userhistory.result}">
+    </div>
+
     <div class="keys">
         <button type="button" class="operator root">√x</button>
         <button type="button" class="operator ce">CE</button>
         <button type="button" class="operator c">C</button>
 
-        <button type="button" class="operator history">HIS</button>
+        <a th:href="@{/calculator/history}"><button type="button" class="operator history">HIS</button></a>
 
         <button type="button" class="operator percent">%</button>
         <button type="button" class="operator rightParen">]</button>
