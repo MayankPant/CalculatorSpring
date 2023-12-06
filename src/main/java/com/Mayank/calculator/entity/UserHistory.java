@@ -48,4 +48,13 @@ public class UserHistory {
     public void setResult(int result) {
         this.result = result;
     }
+
+    @Override
+    public String toString() {
+        return "UserHistory{" +
+                "id=" + id +
+                ", expression='" + expression + '\'' +
+                ", result=" + result +
+                '}';
+    }
 }
