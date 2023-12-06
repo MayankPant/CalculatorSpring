@@ -44,4 +44,10 @@ public class CalculatorController {
         model.addAttribute("userHistory", histories);
         return "user-history";
     }
+
+    @GetMapping("/delete")
+    public String deleteHistory(@RequestParam("historyId") int id, Model model){
+        userHistoryService.deleteById(id);
+        return "redirect:/calculator/user-history";
+    }
 }

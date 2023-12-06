@@ -13,4 +13,6 @@ public interface UserHistoryService {
     UserHistory findById(int id);
 
     List<UserHistory> findAll();
+
+    void deleteById(int id);
 }

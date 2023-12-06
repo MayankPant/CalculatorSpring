@@ -34,4 +34,9 @@ public class UserHistoryServiceImplementation implements UserHistoryService {
     public List<UserHistory> findAll() {
         return userHistoryDao.findAll();
     }
+
+    @Override
+    public void deleteById(int id) {
+        userHistoryDao.deleteById(id);
+    }
 }
