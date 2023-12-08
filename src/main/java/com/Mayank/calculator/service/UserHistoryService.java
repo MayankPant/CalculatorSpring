@@ -15,4 +15,6 @@ public interface UserHistoryService {
     List<UserHistory> findAll();
 
     void deleteById(int id);
+
+    String calculateResult(String expression);
 }

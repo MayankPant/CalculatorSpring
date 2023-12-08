@@ -39,4 +39,10 @@ public class UserHistoryServiceImplementation implements UserHistoryService {
     public void deleteById(int id) {
         userHistoryDao.deleteById(id);
     }
+
+    @Override
+    public String calculateResult(String expression) {
+        ShuntingYard shuntingYard = new ShuntingYard();
+        return shuntingYard.calculateExpression(expression);
+    }
 }

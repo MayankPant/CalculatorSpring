@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,6 +31,7 @@ public class CalculatorController {
     public String insertHistory(@RequestParam("historyId") int historyId, Model model){
         UserHistory userHistory = userHistoryService.findById(historyId);
         System.out.println(userHistory);
+        userHistory.setExpression(userHistory.getResult());
         model.addAttribute("userhistory", userHistory);
 
         return "index";
@@ -48,6 +47,15 @@ public class CalculatorController {
     @GetMapping("/delete")
     public String deleteHistory(@RequestParam("historyId") int id, Model model){
         userHistoryService.deleteById(id);
-        return "redirect:/calculator/user-history";
+        return "redirect:/calculator/history";
+    }
+    @PostMapping("/calculateAndSave")
+    public String calculateAndSave(@ModelAttribute("userhistory") UserHistory userHistory, Model model){
+            String result = userHistoryService.calculateResult(userHistory.getExpression());
+            userHistory.setResult(result);
+            userHistoryService.save(userHistory);
+            userHistory.setExpression(result);
+            model.addAttribute("userhistory", userHistory);
+            return "index";
     }
 }

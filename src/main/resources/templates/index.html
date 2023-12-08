@@ -3,46 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+    <script>
+        function insertText(elemID, text) {
+        var elem = document.getElementById(elemID);
+        elem.value += text;
+    }
+        function clearText(elemID) {
+        var elem = document.getElementById(elemID);
+        elem.value = '';
+    }
+        function clearChar(elemID, text) {
+        var elem = document.getElementById(elemID);
+        elem.value += text;
+    }
+    </script>
     <title>Calculator</title>
 </head>
 <body>
 
 <div class="calculator">
 
-    <div class="display">
-        <input type="hidden" th:field="${userhistory.id}">
-        <input type="text" class="display" th:field="${userhistory.result}">
-    </div>
+    <form action="#" th:action="@{/calculator/calculateAndSave}" th:object="${userhistory}" method="POST">
+        <div class="display">
+            <input type="hidden" th:field="${userhistory.id}">
+            <input type="text" id="displayInput" class="display" th:field="${userhistory.expression}">
 
-    <div class="keys">
-        <button type="button" class="operator root">√x</button>
-        <button type="button" class="operator ce">CE</button>
-        <button type="button" class="operator c">C</button>
+        </div>
 
-        <a th:href="@{/calculator/history}" class="history"><button type="button" class="operator historyButton">HIS</button></a>
+        <div class="keys">
+            <button type="button" onclick="insertText('displayInput', '√x')" class="operator root">√x</button>
+            <button type="button" onclick="clearText('displayInput')" value="CE" class="operator ce">CE</button>
+            <button type="button" onclick="clearChar('displayInput')" value="C" class="operator c">C</button>
 
-        <button type="button" class="operator percent">%</button>
-        <button type="button" class="operator rightParen">]</button>
-        <button type="button" class="operator leftParen">[</button>
-        <button type="button" class="operator divide">÷</button>
-        <button type="button" class="number seven">7</button>
-        <button type="button" class="number eight">8</button>
-        <button type="button" class="number nine">9</button>
-        <button type="button" class="operator multiply">X</button>
-        <button type="button" class="number four">4</button>
-        <button type="button" class="number five">5</button>
-        <button type="button" class="number six">6</button>
-        <button type="button" class="operator subtract">-</button>
-        <button type="button" class="number one">1</button>
-        <button type="button" class="number two">2</button>
-        <button type="button" class="number three">3</button>
-        <button type="button" class="operator add">+</button>
-        <button type="button" class="number zero">0</button>
-        <button type="button" class="operator decimal">.</button>
-        <button type="button" class="operator equal">=</button>
-    </div>
+            <a th:href="@{/calculator/history}" class="history">
+                <button type="button" class="operator historyButton">HIS</button>
+            </a>
+
+            <button type="button" onclick="insertText('displayInput', '%')" value="%" class="operator percent">%</button>
+            <button type="button" onclick="insertText('displayInput', ']')" value="]" class="operator rightParen">]</button>
+            <button type="button" onclick="insertText('displayInput', '[')" value="[" class="operator leftParen">[</button>
+            <button type="button" onclick="insertText('displayInput', '/')" class="operator divide">/</button>
+            <button type="button" onclick="insertText('displayInput', '7')" class="number seven">7</button>
+            <button type="button" onclick="insertText('displayInput', '8')" class="number eight">8</button>
+            <button type="button" onclick="insertText('displayInput', '9')" class="number nine">9</button>
+            <button type="button" onclick="insertText('displayInput', '*')" class="operator multiply">*</button>
+            <button type="button" onclick="insertText('displayInput', '4')" class="number four">4</button>
+            <button type="button" onclick="insertText('displayInput', '5')" class="number five">5</button>
+            <button type="button" onclick="insertText('displayInput', '6')" class="number six">6</button>
+            <button type="button" onclick="insertText('displayInput', '-')" class="operator subtract">-</button>
+            <button type="button" onclick="insertText('displayInput', '1')" class="number one">1</button>
+            <button type="button" onclick="insertText('displayInput', '2')" class="number two">2</button>
+            <button type="button" onclick="insertText('displayInput', '3')" class="number three">3</button>
+            <button type="button" onclick="insertText('displayInput', '+')" class="operator add">+</button>
+            <button type="button" onclick="insertText('displayInput', '0')" class="number zero">0</button>
+            <button type="button" onclick="insertText('displayInput', '.')" class="operator decimal">.</button>
+            <button type="submit"  class="operator equal">=</button>
+        </div>
+    </form>
 </div>
-
-
 </body>
 </html>

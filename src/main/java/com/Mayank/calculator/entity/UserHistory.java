@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class UserHistory {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -15,12 +15,17 @@ public class UserHistory {
     private String expression;
 
     @Column(name = "result")
-    private int result;
+    private String result;
     public UserHistory(){
 
     }
-    public UserHistory(int id, String expression, int result) {
+    public UserHistory(int id, String expression, String result) {
         this.id = id;
+        this.expression = expression;
+        this.result = result;
+    }
+
+    public UserHistory(String expression, String result) {
         this.expression = expression;
         this.result = result;
     }
@@ -41,11 +46,11 @@ public class UserHistory {
         this.expression = expression;
     }
 
-    public int getResult() {
+    public String getResult() {
         return result;
     }
 
-    public void setResult(int result) {
+    public void setResult(String result) {
         this.result = result;
     }
 
