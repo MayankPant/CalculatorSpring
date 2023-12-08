@@ -58,4 +58,11 @@ public class CalculatorController {
             model.addAttribute("userhistory", userHistory);
             return "index";
     }
+
+    @GetMapping("/clearAll")
+    public String clearAll(){
+        userHistoryService.deleteAll();
+
+        return "user-history";
+    }
 }

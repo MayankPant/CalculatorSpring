@@ -17,4 +17,6 @@ public interface UserHistoryService {
     void deleteById(int id);
 
     String calculateResult(String expression);
+
+    void deleteAll();
 }

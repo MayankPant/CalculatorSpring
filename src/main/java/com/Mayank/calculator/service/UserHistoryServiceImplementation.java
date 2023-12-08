@@ -45,4 +45,9 @@ public class UserHistoryServiceImplementation implements UserHistoryService {
         ShuntingYard shuntingYard = new ShuntingYard();
         return shuntingYard.calculateExpression(expression);
     }
+
+    @Override
+    public void deleteAll() {
+        userHistoryDao.deleteAll();
+    }
 }
