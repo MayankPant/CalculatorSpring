@@ -9,12 +9,13 @@
         elem.value += text;
     }
         function clearText(elemID) {
-        var elem = document.getElementById(elemID);
         elem.value = '';
     }
-        function clearChar(elemID, text) {
+        function clearChar(elemID) {
         var elem = document.getElementById(elemID);
-        elem.value += text;
+        let exp = elem.value;
+        let len = elem.value.length;
+        elem.value = exp.substring(0, len - 1);
     }
     </script>
     <title>Calculator</title>
