@@ -17,7 +17,7 @@ class ShuntingYard{
 
     public boolean isOperator(char op){
         return op == '~' || op == '#' || op == '+' || op == '-' ||
-                op == '*' || op == '/' || op == '[' || op == ']' || op == '^' || op == '%';
+                op == 'x' || op == '/' || op == '[' || op == ']' || op == '^' || op == '%';
     }
 
     public boolean isUnary(char op){
@@ -30,7 +30,7 @@ class ShuntingYard{
         precedence.put('~',20);
         precedence.put('+',12);
         precedence.put('-',12);
-        precedence.put('*',13);
+        precedence.put('x',13);
         precedence.put('/',13);
         precedence.put('%',13);
         precedence.put('^',16);
@@ -48,7 +48,7 @@ class ShuntingYard{
         Map<Character, DoubleBinaryOperator> operation = new HashMap<>();
         operation.put('+', (p, q) -> p + q);
         operation.put('-', (p, q) -> p - q);
-        operation.put('*', (p, q) -> p * q);
+        operation.put('x', (p, q) -> p * q);
         operation.put('/', (p, q) -> p / q);
         operation.put('%', (p, q) -> p % q);
         operation.put('^', (p, q) -> Math.pow(p, q));

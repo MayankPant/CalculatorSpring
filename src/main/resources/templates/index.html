@@ -13,7 +13,7 @@
     <form action="#" th:action="@{/calculator/calculateAndSave}" th:object="${userhistory}" method="POST">
         <div class="display">
             <input type="hidden" th:field="${userhistory.id}">
-            <input type="text" id="displayInput" class="display" th:field="${userhistory.expression}">
+            <input type="text" width="400px" id="displayInput" class="display displayText" th:field="${userhistory.expression}" readonly tabindex="-1">
 
         </div>
 
@@ -23,17 +23,18 @@
             <button type="button" onclick="clearChar('displayInput')" value="C" class="operator c">C</button>
 
             <a th:href="@{/calculator/history}" class="history">
-                <button type="button" class="operator historyButton">HIS</button>
+                <button type="button" class="operator historyButton">🕒
+                </button>
             </a>
 
-            <button type="button" onclick="insertText('displayInput', '%')" value="%" class="operator percent">%</button>
-            <button type="button" onclick="insertText('displayInput', ']')" value="]" class="operator rightParen">]</button>
-            <button type="button" onclick="insertText('displayInput', '[')" value="[" class="operator leftParen">[</button>
+            <button type="button" onclick="insertText('displayInput', '%')" value="%" class="percent">%</button>
+            <button type="button" onclick="insertText('displayInput', ']')" value="]" class="rightParen">]</button>
+            <button type="button" onclick="insertText('displayInput', '[')" value="[" class="leftParen">[</button>
             <button type="button" onclick="insertText('displayInput', '/')" class="operator divide">/</button>
             <button type="button" onclick="insertText('displayInput', '7')" class="number seven">7</button>
             <button type="button" onclick="insertText('displayInput', '8')" class="number eight">8</button>
             <button type="button" onclick="insertText('displayInput', '9')" class="number nine">9</button>
-            <button type="button" onclick="insertText('displayInput', '*')" class="operator multiply">*</button>
+            <button type="button" onclick="insertText('displayInput', 'x')" class="operator multiply">x</button>
             <button type="button" onclick="insertText('displayInput', '4')" class="number four">4</button>
             <button type="button" onclick="insertText('displayInput', '5')" class="number five">5</button>
             <button type="button" onclick="insertText('displayInput', '6')" class="number six">6</button>
@@ -43,7 +44,7 @@
             <button type="button" onclick="insertText('displayInput', '3')" class="number three">3</button>
             <button type="button" onclick="insertText('displayInput', '+')" class="operator add">+</button>
             <button type="button" onclick="insertText('displayInput', '0')" class="number zero">0</button>
-            <button type="button" onclick="insertText('displayInput', '.')" class="operator decimal">.</button>
+            <button type="button" onclick="insertText('displayInput', '.')" class="decimal">.</button>
             <button type="submit"  class="operator equal">=</button>
         </div>
     </form>
