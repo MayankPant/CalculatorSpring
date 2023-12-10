@@ -179,6 +179,7 @@ class ShuntingYard{
         }
         catch (Exception e){
             System.out.println(e.getMessage());
+            return "Invalid Expression";
         }
 
         return finalResult;
