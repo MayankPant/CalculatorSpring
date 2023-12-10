@@ -17,7 +17,7 @@ class ShuntingYard{
 
     public boolean isOperator(char op){
         return op == '~' || op == '#' || op == '+' || op == '-' ||
-                op == '*' || op == '/' || op == '[' || op == ']' || op == '^';
+                op == '*' || op == '/' || op == '[' || op == ']' || op == '^' || op == '%';
     }
 
     public boolean isUnary(char op){
@@ -32,6 +32,7 @@ class ShuntingYard{
         precedence.put('-',12);
         precedence.put('*',13);
         precedence.put('/',13);
+        precedence.put('%',13);
         precedence.put('^',16);
         precedence.put('[',17);
         precedence.put(']',17);
@@ -49,6 +50,7 @@ class ShuntingYard{
         operation.put('-', (p, q) -> p - q);
         operation.put('*', (p, q) -> p * q);
         operation.put('/', (p, q) -> p / q);
+        operation.put('%', (p, q) -> p % q);
         operation.put('^', (p, q) -> Math.pow(p, q));
         DoubleBinaryOperator func = operation.get(operator);
         return func.applyAsDouble(a, b);
