@@ -3,6 +3,7 @@ function insertText(elemID, text) {
         elem.value += text;
     }
         function clearText(elemID) {
+        var elem = document.getElementById(elemID);
         elem.value = '';
     }
         function clearChar(elemID) {
